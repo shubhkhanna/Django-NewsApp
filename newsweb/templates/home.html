@@ -1,6 +1,6 @@
 {% extends "base.html"%}
 {% block body %}
-<div class="container-fluid mx-2">
+<div class="container px-1">
     <h2 class="text-dark text-center font-weight-bold mt-5 pt-5 mb-4" style="font-size: 2.5em;">Get Latest News From Google News(India)</h2>
     <div class="row">
         {% for article in api.articles %}
@@ -9,7 +9,13 @@
                 <img src="{{article.urlToImage}}" alt="{{article.source.name}}" class="card-img-top rounded">
                 <div class="card-body">
                     <h3 class="card-title">{{article.title}}</h3>
-                    <p class="lead text-muted font-weight-bold">{{article.author}}</p>
+                    <p class="lead text-muted font-weight-bold">
+                        {% if article.author == null or article.author == "" %}
+                            {{'N/A'}}
+                        {% else %}
+                            {{article.author}}
+                        {% endif %}
+                    </p>
                     <p class="lead text-muted font-weight-bold">{{article.publishedAt}}</p>
                     <p class="card-text text-dark ">{{article.description | truncatechars:100}}</p>
                     <a href="{{article.url}}" class="btn btn-danger" target="_blank">More Info &#x2799;</a>
