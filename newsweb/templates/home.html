@@ -1,12 +1,12 @@
 {% extends "base.html"%}
 {% block body %}
-<div class="container px-1">
+<div class="container">
     <h2 class="text-dark text-center font-weight-bold mt-5 pt-5 mb-4" style="font-size: 2.5em;">Get Latest News From Google News(India)</h2>
-    {% for article in api.articles %}
-    <div class="row"></div>
-        <div class="col-lg-12 col-md-12">
-            <div class="card my-1" style="border-radius: 8px;border: 1px solid black; box-shadow: 0 1px 5px black;height: 95%;">
-                <img src="{{article.urlToImage}}" alt="{{article.source.name}}" class="float-left rounded">
+    <div class="row">
+        {% for article in api.articles %}
+        <div class="col-lg-4 col-md-4">
+            <div class="card my-2" style="border-radius: 8px;border: 1px solid black; box-shadow: 0 1px 5px black;height: 95%;">
+                <img src="{{article.urlToImage}}" alt="{{article.source.name}}" class="card-img-top rounded">
                 <div class="card-body">
                     <h3 class="card-title">{{article.title}}</h3>
                     <p class="lead text-muted font-weight-bold">
@@ -22,7 +22,7 @@
                 </div>
             </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
 {% endblock %}
